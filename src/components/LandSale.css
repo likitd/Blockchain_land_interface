@@ -1,0 +1,38 @@
+/* src/components/LandSale.css */
+.land-sale-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .land-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+  }
+  
+  .land-table th, .land-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .land-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .buy-button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .buy-button:hover {
+    background-color: #218838;
+  }
+  

@@ -6,18 +6,16 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import LandForSale from './components/LandForSale';
-import LandOfficer from './components/LandOfficer'; // Import LandOfficer
-import './App.css'; // Import your styles
+import LandOfficer from './components/LandOfficer';
+import LandSale from './components/LandSale';
+import './App.css';
 
 function Layout({ children }) {
   const location = useLocation();
-  
-  // Check if we are on the 'land-for-sale' page
   const hideHeader = location.pathname === '/land-for-sale';
 
   return (
     <>
-      {/* Conditionally render header */}
       {!hideHeader && (
         <div>
           <h1>Land Registry DApp</h1>
@@ -25,6 +23,7 @@ function Layout({ children }) {
             <Link to="/signup" className="button">Sign Up</Link>
             <Link to="/login" className="button">Log In</Link>
             <Link to="/dashboard" className="button">Dashboard</Link>
+            <Link to="/land-sale" className="button">Land Sale</Link>
           </nav>
         </div>
       )}
@@ -34,12 +33,12 @@ function Layout({ children }) {
 }
 
 function App() {
-  const [aadharNumber] = useState('1234-5678-9012'); // Example Aadhar number
   const [lands, setLands] = useState([
-    { id: 1, location: 'Location XYZ', isConventional: false },
-    { id: 2, location: 'Location ABC', isConventional: false }
-  ]); // Land data state
-
+    { id: 1, location: 'Location XYZ', isConventional: false, isForSale: false, ownedByUser: true },
+    { id: 2, location: 'Location ABC', isConventional: false, isForSale: true, ownedByUser: false },
+    { id: 3, location: 'Location LMN', isConventional: true, isForSale: true, ownedByUser: false },
+  ]);
+  
   return (
     <Router>
       <Layout>
@@ -47,9 +46,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile aadharNumber={aadharNumber} lands={lands} setLands={setLands} />} /> {/* Pass aadharNumber */}
+          <Route path="/profile" element={<Profile lands={lands} setLands={setLands} />} />
           <Route path="/land-for-sale" element={<LandForSale />} />
-          <Route path="/land-officer" element={<LandOfficer setLands={setLands} />} /> {/* Pass setLands to LandOfficer */}
+          <Route path="/land-officer" element={<LandOfficer lands={lands} setLands={setLands} />} />
+          <Route path="/land-sale" element={<LandSale lands={lands} setLands={setLands} />} />
         </Routes>
       </Layout>
     </Router>
