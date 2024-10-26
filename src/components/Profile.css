@@ -90,3 +90,16 @@ button {
 .action-button.sell:hover {
     background-color: #007bb5;
 }
+
+.land-details {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.land-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
